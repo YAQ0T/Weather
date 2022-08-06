@@ -1,0 +1,26 @@
+.header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+#searchButton {
+  width: 40%;
+  background-color: aquamarine;
+  margin-left: 50%;
+  margin-top: 15%;
+  border-radius: 8px;
+  padding: 2%;
+}
+#searchText {
+  width: 130%;
+  padding: 2%;
+
+  margin-top: 15%;
+  margin-left: 5%;
+  border-radius: 8px;
+  background-color: antiquewhite;
+}
+
+.container {
+  margin-top: 15%;
+  margin-left: 3%;
+}
