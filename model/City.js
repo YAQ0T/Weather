@@ -6,6 +6,7 @@ const weatherSchema = new Schema({
   temperature: Number,
   condition: String,
   conditionPic: String,
+  saved: Boolean,
 });
 
 const weather = new mongoose.model("weather", weatherSchema);
@@ -16,6 +17,7 @@ function addWeatherToDataBase(cityName, cityWeatherInfo) {
     temperature: cityWeatherInfo.temperature,
     condition: cityWeatherInfo.condition,
     conditionPic: cityWeatherInfo.conditionPic,
+    saved: false,
   });
   tempWeather.save();
 }
@@ -26,8 +28,7 @@ async function findAllCities() {
 }
 
 function deleteSpecificCity(cityName) {
-  weather.deleteMany({ name: cityName }, function (err, res) {
-    console.log(res);
-  });
+  weather.deleteMany({ name: cityName }, function (err, res) {});
 }
+
 module.exports = { addWeatherToDataBase, findAllCities, deleteSpecificCity };

@@ -5,17 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link href="./fontawesome-free-6.1.2-web/css/all.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <h2>City name :</h2>
+
     <div class="header">
       <input type="text" name="search" id="searchText" />
-      <input type="button" value="search" id="searchButton" />
+      <div id="searchButton">
+        <i class="fa-brands fa-searchengin"></i>
+      </div>
     </div>
     <div class="container"></div>
   </body>
   <script src="jquery-3.6.0.min.js"></script>
-  <script src="client.js"></script>
+  <script src="model.js"></script>
   <script src="controler.js"></script>
 
   <script src="render.js"></script>

@@ -45,7 +45,7 @@ app.get("/cities", async (req, res) => {
 
 app.post("/city", function (req, res) {
   const cityInfo = req.body;
-  console.log(cityInfo);
+
   let tempObj = {
     temperature: cityInfo.temperature,
     condition: cityInfo.condition,
@@ -59,7 +59,8 @@ app.post("/city", function (req, res) {
 app.delete("/city/:cityName", function (req, res) {
   const cityName = req.params.cityName;
   WEATHER_CONTROLER.deleteSpecificCity(cityName);
-  res.send(`Delete record with id ${cityName}`);
+  res.send(`Delete record with id${cityName}`);
 });
+
 app.get("/", (req, res) => res.send("Hello World!"));
 app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
