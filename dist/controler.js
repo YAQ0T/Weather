@@ -12,15 +12,15 @@ $("#searchButton").on("click", async function () {
 model.getDataFromDB();
 
 $(".container").on("click", "i", async function () {
+  let cityName = $(this).closest(".element").find("#name").text();
+
   if ($(this).hasClass("fa-circle-plus")) {
     $(this).removeClass(`fa-circle-plus`);
     $(this).addClass(`fa-circle-minus`);
     model.postDataToDataBase();
   } else {
     $(this).removeClass(`fa-circle-minus`);
-    $(this).addClass(`fa-circle-plus`);
-    let cityName = $(this).closest(".element").find("#name").text();
     await model.deleteWeatherFromDataBase(cityName);
-    model.getDataFromDB();
+    $(this).addClass(`fa-circle-plus`);
   }
 });
