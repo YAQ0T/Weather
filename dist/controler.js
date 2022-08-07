@@ -2,8 +2,12 @@ let model = new Moduel("");
 
 $("#searchButton").on("click", async function () {
   let cityName = $("#searchText").val();
-  await model.handleSearch(cityName);
-  render();
+  if (cityName == "") {
+    alert("Please fill the SEARCH BAR");
+  } else {
+    await model.handleSearch(cityName);
+    render();
+  }
 });
 model.getDataFromDB();
 

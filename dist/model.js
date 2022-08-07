@@ -11,8 +11,13 @@ class Moduel {
   }
   async handleSearch(cityName) {
     await $.get("http://localhost:3000/city/" + cityName, (data) => {
-      data.name = cityName;
-      this.cityData.push(data);
+      if (data == "problem With Name") {
+        alert("Cant find the city");
+      } else {
+        data.name = cityName;
+
+        this.cityData.push(data);
+      }
     });
   }
   postDataToDataBase() {

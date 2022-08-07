@@ -16,22 +16,24 @@ const CHANGE_ME_API =
 async function getCityWeatherInfo(cityName) {
   const cityGeoResponse = await axios.get(CHANGE_ME_API + `&q=${cityName}`);
   const cityGeo = cityGeoResponse.data[0];
-
-  const cityWeatherResponse = await axios.get(
-    "https://api.openweathermap.org/data/2.5/weather?lat=" +
-      cityGeo.lat +
-      "&lon=" +
-      cityGeo.lon +
-      "&appid=16afded51d593d428f7bc04428b43e6d"
-  );
-  const cityWeather = cityWeatherResponse.data;
-  const weatherDescreption = cityWeather.weather[0];
-  const cityWeatherInfo = {
-    temperature: cityWeather.main.temp - 273.15,
-    condition: weatherDescreption.description,
-    conditionPic: weatherDescreption.icon,
-  };
-  return cityWeatherInfo;
+  if (cityGeo) {
+    const cityWeatherResponse = await axios.get(
+      "https://api.openweathermap.org/data/2.5/weather?lat=" +
+        cityGeo.lat +
+        "&lon=" +
+        cityGeo.lon +
+        "&appid=16afded51d593d428f7bc04428b43e6d"
+    );
+    const cityWeather = cityWeatherResponse.data;
+    const weatherDescreption = cityWeather.weather[0];
+    const cityWeatherInfo = {
+      temperature: cityWeather.main.temp - 273.15,
+      condition: weatherDescreption.description,
+      conditionPic: weatherDescreption.icon,
+    };
+    return cityWeatherInfo;
+  }
+  return "problem With Name";
 }
 
 app.get("/city/:cityName", async (req, res) => {
